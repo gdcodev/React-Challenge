@@ -62,7 +62,7 @@ const ToDo = () => {
   };
 
   const visibleTodos = filterTodos();
-  const doneCount = 0
+  const doneCount = todos.filter(todo => todo.completed === true).length;
 
   return (
     <div>
