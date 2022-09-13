@@ -27,7 +27,20 @@ const ToDo = () => {
 
   const handleAddTodo = () => {
     // agregar una tarea
-    
+    const newToDo = {
+      id: todos.length + 1,
+      title: addTodo,
+      completed: false
+    }
+
+    // Seteamos la nueva tarea
+    setTodos([
+      ...todos,
+      newToDo
+    ]);
+
+    // Reset input
+    setAddTodo("");
   };
 
   const filterTodos = () => {
