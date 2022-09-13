@@ -49,7 +49,12 @@ const ToDo = () => {
 
   const filterTodos = () => {
     // filtrar tareas por completadas, no completadas, todas.
-    return todos
+    if(filter === "complete") {
+      return todos.filter(todo => todo.completed === true);
+    } else if(filter === "incomplete") {
+      return todos.filter(todo => todo.completed === false);
+    }
+    return todos;
   };
 
   const handleChange = (e) => {
