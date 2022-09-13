@@ -22,7 +22,8 @@ const ToDo = () => {
 
   const handleRemove = (item) => {
     // eliminar una tarea
-
+    const deleteToDo = todos.filter(todo => todo.id !== item.id);
+    setTodos(deleteToDo);
   };
 
   const handleAddTodo = () => {
