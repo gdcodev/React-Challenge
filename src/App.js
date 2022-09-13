@@ -17,12 +17,15 @@ const ToDo = () => {
 
   const handleStatus = (item) => {
     // marcar como completada o no una tarea
-
+    const { id } = item;
+    const statusToDo = todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo);
+    setTodos(statusToDo);
   };
 
   const handleRemove = (item) => {
     // eliminar una tarea
-    const deleteToDo = todos.filter(todo => todo.id !== item.id);
+    const { id } = item;
+    const deleteToDo = todos.filter(todo => todo.id !== id);
     setTodos(deleteToDo);
   };
 
