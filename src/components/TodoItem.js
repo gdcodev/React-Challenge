@@ -9,10 +9,11 @@ const StatusIcon = ({ completed }) => {
 };
 
 const ToDoItem = ({ item, handleStatus, handleRemove }) => {
-    const { title, completed } = item;
+    const { title, completed, id } = item;
     return (
         <div className="todo">
             <button
+                value={ completed }
                 className="todo-item"
                 style={{
                     textDecoration: completed ? `line-through` : `none`
@@ -22,7 +23,7 @@ const ToDoItem = ({ item, handleStatus, handleRemove }) => {
                 <StatusIcon completed={completed} />
                 {title}
             </button>
-            <button className="btn-delete" onClick={handleRemove}>
+            <button data-testid={id} className="btn-delete" onClick={handleRemove}>
                 <TrashCanIcon className="delete-icon" />
             </button>
         </div>

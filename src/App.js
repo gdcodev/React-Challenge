@@ -37,7 +37,6 @@ const ToDo = () => {
       completed: false
     }
 
-    // Seteamos la nueva tarea
     setTodos([
       ...todos,
       newToDo
@@ -50,9 +49,9 @@ const ToDo = () => {
   const filterTodos = () => {
     // filtrar tareas por completadas, no completadas, todas.
     if(filter === "complete") {
-      return todos.filter(todo => todo.completed === true);
+      return todos.filter(({ completed }) => completed === true);
     } else if(filter === "incomplete") {
-      return todos.filter(todo => todo.completed === false);
+      return todos.filter(({ completed }) => completed === false);
     }
     return todos;
   };
@@ -62,7 +61,7 @@ const ToDo = () => {
   };
 
   const visibleTodos = filterTodos();
-  const doneCount = todos.filter(todo => todo.completed === true).length;
+  const doneCount = todos.filter(({ completed }) => completed === true).length;
 
   return (
     <div>
@@ -101,7 +100,7 @@ const ToDo = () => {
         </p>
       </div>
       {visibleTodos.length === 0 && (
-        <p style={{ paddingLeft: "1rem" }}>No todos to show here...</p>
+        <p style={{ paddingLeft: "1rem" }}>No tasks {filter}</p>
       )}
       {visibleTodos.length > 0 &&
         visibleTodos.map((item, idx) => {
